@@ -43,6 +43,13 @@ function App() {
     setIsModalOpen(!isModalOpen);
   };
 
+  const closeModal = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Modalning tashqi qismini bosilganda yopish
+    if (e.target === e.currentTarget) {
+      setIsModalOpen(false);
+    }
+  };
+
   return (
     <div className="container">
       <iframe
@@ -57,7 +64,7 @@ function App() {
       <button onClick={closeCamera}>Close Camera</button>
       <button onClick={toggleModal}>Info</button>
       {isModalOpen && (
-        <div className="modal">
+        <div className="modal" onClick={closeModal}>
           <div className="modal-content">
             <span className="close-button" onClick={toggleModal}>&times;</span>
             <img src={exclamation} alt="Modal Content" />
